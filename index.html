@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>SSC GPA Calculator Online - Calculate GPA for Science, Commerce, Arts</title>
+  <meta name="description" content="Calculate your Bangladeshi SSC 2026 exam GPA quickly. Supports Science, Commerce, and Humanities groups with the official 4th subject rule and automatic total mark tracking.">
+  <meta name="keywords" content="ssc gpa calculator, SSC result calculator, BD SSC GPA counter, 4th subject rules SSC, SSC grading system Bangladesh, how to calculate ssc gpa">
+  <link rel="canonical" href="https://sscgpacalculator.com/">
+  
+  <!-- Facebook / Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sscgpacalculator.com/">
+  <meta property="og:title" content="SSC GPA Calculator Online - Calculate GPA for Science, Commerce, Arts">
+  <meta property="og:description" content="Calculate your Bangladeshi SSC 2026 exam GPA quickly. Supports Science, Commerce, and Humanities groups with the official 4th subject rule and automatic total mark tracking.">
+  <meta property="og:image" content="https://sscgpacalculator.com/logo.png">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://sscgpacalculator.com/">
+  <meta name="twitter:title" content="SSC GPA Calculator Online - Calculate GPA for Science, Commerce, Arts">
+  <meta name="twitter:description" content="Calculate your Bangladeshi SSC 2026 exam GPA quickly. Supports Science, Commerce, and Humanities groups with the official 4th subject rule and automatic total mark tracking.">
+  <meta name="twitter:image" content="https://sscgpacalculator.com/logo.png">
+
+  <!-- Structured Data / JSON-LD Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "SSC GPA Calculator",
+    "url": "https://sscgpacalculator.com",
+    "description": "An interactive web calculator to calculate the GPA of Bangladeshi SSC candidates based on official board rules.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the minimum mark to pass a subject in the SSC Exam?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The minimum passing mark for any separate theoretical, practical, or MCQ part is 33%. If you get below 33 overall or fail to pass separate sub-parts as specified by the board rules, you receive an F grade."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the 4th subject change my total GPA calculation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Any points above 2.00 earned in your optional (4th) subject are directly added to your total grade points before dividing by the number of mandatory subjects. This bonus cannot cause your overall score to exceed a maximum ceiling of GPA 5.00."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a high score in my optional subject prevent me from failing overall?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. If you receive an F grade (below 33 marks) in any mandatory core subject like Bangla, Mathematics, or English, your total final outcome will immediately be marked as 0.00 (Failed)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this calculator configured for the Science, Commerce, and Arts groups?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. This online tool dynamically maps custom requirements across the modern track frameworks for Science, Business Studies (Commerce), and Humanities (Arts) layouts under Bangladesh education boards."
+      }
+    }
+  ]
+}
+</script>
+  
+
+  <!-- Google Fonts for Bold Headings -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Non-blocking asynchronous loader -->
+<link 
+  href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" 
+  rel="stylesheet" 
+  media="print" 
+  onload="this.media='all'"
+>
+
+<!-- Fallback for browsers with JavaScript disabled -->
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+</noscript>
+
+  <style>
+    :root {
+      --bg: #FFDE4D;
+      --card-bg: #FFFFFF;
+      --text: #000000;
+      --accent: #FF5A5F;
+      --accent-hover: #E0484D;
+      --secondary: #3D5A80;
+      --border-thickness: 3px;
+      --neo-shadow: 6px 6px 0px #000000;
+      --neo-shadow-clickable: 3px 3px 0px #000000;
+      
+      --success-banner: #60CD82;
+      --fail-banner: #FF5A5F;
+      --input-focus: #98E2C6;
+    }
+
+    body.dark-mode {
+      --bg: #121214;
+      --card-bg: #1E1E24;
+      --text: #FFFFFF;
+      --accent: #FF5A5F;
+      --accent-hover: #FF7377;
+      --secondary: #A7C957;
+      --neo-shadow: 6px 6px 0px #FFDE4D;
+      --neo-shadow-clickable: 3px 3px 0px #FFDE4D;
+      
+      --success-banner: #2A7B46;
+      --fail-banner: #9B2226;
+      --input-focus: #3D5A80;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 40px 20px;
+      transition: background-color 0.2s steps(2);
+    }
+
+    .top-bar {
+      display: flex;
+      width: 100%;
+      max-width: 550px;
+      justify-content: flex-end;
+      margin-bottom: 15px;
+    }
+
+    .dark-mode-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      background: var(--card-bg);
+      padding: 8px 14px;
+      border: var(--border-thickness) solid #000000;
+      box-shadow: var(--neo-shadow-clickable);
+      cursor: pointer;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 36px;
+      height: 20px;
+    }
+
+    .switch input { opacity: 0; width: 0; height: 0; }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #000000;
+      transition: 0.15s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 12px;
+      width: 12px;
+      left: 3px;
+      bottom: 2px;
+      background-color: #FFFFFF;
+      transition: 0.15s;
+    }
+
+    input:checked + .slider { background-color: var(--accent); }
+    input:checked + .slider:before { transform: translateX(14px); }
+
+    .container {
+      background: var(--card-bg);
+      width: 100%;
+      max-width: 550px;
+      padding: 30px;
+      border: var(--border-thickness) solid #000000;
+      box-shadow: var(--neo-shadow);
+      margin-bottom: 30px;
+    }
+
+    h1 { 
+      font-size: 1.8rem; 
+      font-weight: 800; 
+      margin-bottom: 25px; 
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      font-weight: 800;
+      margin-top: 18px;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 12px;
+      border: var(--border-thickness) solid #000000;
+      background-color: var(--card-bg);
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 700;
+      outline: none;
+    }
+
+    select:focus, input:focus {
+      background-color: var(--input-focus);
+    }
+
+    .group-panel {
+      display: none;
+    }
+
+    .group-panel.active {
+      display: block;
+    }
+
+    .subject-row {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      border: var(--border-thickness) solid #000000;
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 25px;
+      background-color: #0056b3;
+      color: #FFFFFF;
+      box-shadow: var(--neo-shadow-clickable);
+      position: relative;
+    }
+
+    button:hover { background-color: var(--accent-hover); }
+    button:active { top: 2px; left: 2px; box-shadow: 1px 1px 0px #000000; }
+
+    #saveImageBtn { background-color: var(--secondary); margin-top: 12px; }
+
+    #resultContainer { 
+      margin-top: 25px; 
+      border: var(--border-thickness) solid #000000; 
+      display: none;
+    }
+    
+    #result { font-size: 1.6rem; font-weight: 800; padding: 18px; text-transform: uppercase; }
+    #totalMarks { font-size: 1rem; padding: 0 18px 14px 18px; font-weight: 700; text-transform: uppercase; }
+
+    .status-pass { background-color: var(--success-banner) !important; color: #FFFFFF !important; display: block !important; }
+    .status-fail { background-color: var(--fail-banner) !important; color: #FFFFFF !important; display: block !important; }
+
+    .seo-content {
+      width: 100%;
+      max-width: 750px;
+      background: var(--card-bg);
+      padding: 35px;
+      border: var(--border-thickness) solid #000000;
+      box-shadow: var(--neo-shadow);
+      text-align: left;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .seo-content h2 { 
+      font-size: 1.5rem; font-weight: 800; margin-top: 30px; margin-bottom: 12px; 
+      text-transform: uppercase; border-bottom: 2px solid #000000; padding-bottom: 4px;
+    }
+    .seo-content h3 { font-size: 1.15rem; font-weight: 800; margin-top: 20px; margin-bottom: 8px; text-transform: uppercase; }
+    .seo-content p { margin-bottom: 15px; font-size: 0.95rem; font-weight: 600; }
+    .seo-content ul { margin-left: 20px; margin-bottom: 15px; font-size: 0.95rem; }
+    .seo-content li { margin-bottom: 6px; font-weight: 600; }
+
+    /* FAQ Accordion Styling Layout */
+    .faq-section {
+      margin-top: 35px;
+    }
+    .faq-item {
+      border: var(--border-thickness) solid #000000;
+      margin-bottom: 15px;
+      background-color: var(--card-bg);
+    }
+    .faq-details summary {
+      padding: 16px;
+      font-weight: 800;
+      font-size: 1rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    .faq-details summary::-webkit-details-marker {
+      display: none;
+    }
+    .faq-details summary::after {
+      content: "➕";
+      font-size: 0.9rem;
+    }
+    .faq-details[open] summary::after {
+      content: "➖";
+    }
+    .faq-answer {
+      padding: 0 16px 16px 16px;
+      border-top: 2px dashed #000000;
+      padding-top: 14px;
+    }
+    .faq-answer p {
+      margin-bottom: 0;
+    }
+  </style>
+  
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CLNNFQ9LLN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CLNNFQ9LLN');
+</script>
+  
+  
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="dark-mode-toggle" aria-label="Toggle dark mode" tabindex="0">
+      <span style="user-select:none;">Dark Mode</span>
+      <label class="switch" for="toggle-dark-mode">
+        <input type="checkbox" id="toggle-dark-mode" aria-label="Toggle Dark Mode">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <main class="container" role="main">
+    <h1>⚡ SSC GPA Calculator (2026)</h1>
+
+    <label for="groupSelect">Select Track / Group</label>
+    <select id="groupSelect" autocomplete="off">
+      <option value="science">Science</option>
+      <option value="commerce">Commerce (Business Studies)</option>
+      <option value="humanities">Humanities</option>
+    </select>
+
+    <label for="optional_subject">Optional (4th) Subject</label>
+    <select id="optional_subject">
+      <!-- Injected by dynamic array loop definitions -->
+    </select>
+
+    <hr style="margin-top: 25px; margin-bottom: 15px; border: 1px dashed #000;" />
+
+    <form id="subjectsForm" onsubmit="return false;">
+      
+      <!-- SCIENCE SUBJECTS CONTAINER -->
+      <div id="panel-science" class="group-panel active">
+        <!-- Bangla -->
+        <label id="sci-bangla-label">Bangla (1st & 2nd)</label>
+        <div class="subject-row" data-subject="Bangla">
+          <select class="grade-select" aria-labelledby="sci-bangla-label" aria-label="Bangla Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Bangla Marks">
+        </div>
+        <!-- English -->
+        <label id="sci-english-label">English (1st & 2nd)</label>
+        <div class="subject-row" data-subject="English">
+          <select class="grade-select" aria-labelledby="sci-english-label" aria-label="English Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="English Marks">
+        </div>
+        <!-- Mathematics -->
+        <label id="sci-math-label">Mathematics</label>
+        <div class="subject-row" data-subject="Mathematics">
+          <select class="grade-select" aria-labelledby="sci-math-label" aria-label="Mathematics Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Mathematics Marks">
+        </div>
+        <!-- Religion -->
+        <label id="sci-religion-label">Religion & Moral Education</label>
+        <div class="subject-row" data-subject="Religion & Moral Education">
+          <select class="grade-select" aria-labelledby="sci-religion-label" aria-label="Religion Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Religion Marks">
+        </div>
+        <!-- ICT -->
+        <label id="sci-ict-label">ICT</label>
+        <div class="subject-row" data-subject="ICT">
+          <select class="grade-select" aria-labelledby="sci-ict-label" aria-label="ICT Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="ICT Marks">
+        </div>
+        <!-- BGS -->
+        <label id="sci-bgs-label">Bangladesh & Global Studies</label>
+        <div class="subject-row" data-subject="Bangladesh & Global Studies">
+          <select class="grade-select" aria-labelledby="sci-bgs-label" aria-label="BGS Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="BGS Marks">
+        </div>
+        <!-- Physics -->
+        <label id="sci-physics-label">Physics</label>
+        <div class="subject-row" data-subject="Physics">
+          <select class="grade-select" aria-labelledby="sci-physics-label" aria-label="Physics Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Physics Marks">
+        </div>
+        <!-- Chemistry -->
+        <label id="sci-chemistry-label">Chemistry</label>
+        <div class="subject-row" data-subject="Chemistry">
+          <select class="grade-select" aria-labelledby="sci-chemistry-label" aria-label="Chemistry Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Chemistry Marks">
+        </div>
+        <!-- Biology Split Option -->
+        <label id="sci-biology-label" class="cond-subject" data-subname="Biology">Biology</label>
+        <div class="subject-row" data-subject="Biology" class="cond-subject" data-subname="Biology">
+          <select class="grade-select" aria-labelledby="sci-biology-label" aria-label="Biology Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Biology Marks">
+        </div>
+        <!-- Higher Math Split Option -->
+        <label id="sci-hmath-label" class="cond-subject" data-subname="Higher Mathematics">Higher Mathematics</label>
+        <div class="subject-row" data-subject="Higher Mathematics" class="cond-subject" data-subname="Higher Mathematics">
+          <select class="grade-select" aria-labelledby="sci-hmath-label" aria-label="Higher Mathematics Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Higher Mathematics Marks">
+        </div>
+        <!-- Alternative Elective Option 1 -->
+        <label id="sci-agri-label" class="cond-subject" data-subname="Agriculture Studies">Agriculture Studies</label>
+        <div class="subject-row" data-subject="Agriculture Studies" class="cond-subject" data-subname="Agriculture Studies">
+          <select class="grade-select" aria-labelledby="sci-agri-label" aria-label="Agriculture Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Agriculture Marks">
+        </div>
+        <!-- Alternative Elective Option 2 -->
+        <label id="sci-home-label" class="cond-subject" data-subname="Home Science">Home Science</label>
+        <div class="subject-row" data-subject="Home Science" class="cond-subject" data-subname="Home Science">
+          <select class="grade-select" aria-labelledby="sci-home-label" aria-label="Home Science Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Home Science Marks">
+        </div>
+      </div>
+
+      <!-- COMMERCE SUBJECTS CONTAINER -->
+      <div id="panel-commerce" class="group-panel">
+        <label id="comm-bangla-label">Bangla (1st & 2nd)</label>
+        <div class="subject-row" data-subject="Bangla">
+          <select class="grade-select" aria-labelledby="comm-bangla-label" aria-label="Bangla Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Bangla Marks">
+        </div>
+        <label id="comm-english-label">English (1st & 2nd)</label>
+        <div class="subject-row" data-subject="English">
+          <select class="grade-select" aria-labelledby="comm-english-label" aria-label="English Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="English Marks">
+        </div>
+        <label id="comm-math-label">Mathematics</label>
+        <div class="subject-row" data-subject="Mathematics">
+          <select class="grade-select" aria-labelledby="comm-math-label" aria-label="Mathematics Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Mathematics Marks">
+        </div>
+        <label id="comm-religion-label">Religion & Moral Education</label>
+        <div class="subject-row" data-subject="Religion & Moral Education">
+          <select class="grade-select" aria-labelledby="comm-religion-label" aria-label="Religion Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Religion Marks">
+        </div>
+        <label id="comm-ict-label">ICT</label>
+        <div class="subject-row" data-subject="ICT">
+          <select class="grade-select" aria-labelledby="comm-ict-label" aria-label="ICT Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="ICT Marks">
+        </div>
+        <label id="comm-science-label">General Science</label>
+        <div class="subject-row" data-subject="General Science">
+          <select class="grade-select" aria-labelledby="comm-science-label" aria-label="General Science Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="General Science Marks">
+        </div>
+        <label id="comm-bus-label">Introduction to Business</label>
+        <div class="subject-row" data-subject="Introduction to Business">
+          <select class="grade-select" aria-labelledby="comm-bus-label" aria-label="Introduction to Business Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Introduction to Business Marks">
+        </div>
+        <label id="comm-acc-label">Accounting</label>
+        <div class="subject-row" data-subject="Accounting">
+          <select class="grade-select" aria-labelledby="comm-acc-label" aria-label="Accounting Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Accounting Marks">
+        </div>
+        <label id="comm-fin-label">Finance & Banking</label>
+        <div class="subject-row" data-subject="Finance & Banking">
+          <select class="grade-select" aria-labelledby="comm-fin-label" aria-label="Finance and Banking Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Finance and Banking Marks">
+        </div>
+        <label id="comm-agri-label" class="cond-subject" data-subname="Agriculture Studies">Agriculture Studies</label>
+        <div class="subject-row" data-subject="Agriculture Studies" class="cond-subject" data-subname="Agriculture Studies">
+          <select class="grade-select" aria-labelledby="comm-agri-label" aria-label="Agriculture Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Agriculture Marks">
+        </div>
+        <label id="comm-home-label" class="cond-subject" data-subname="Home Science">Home Science</label>
+        <div class="subject-row" data-subject="Home Science" class="cond-subject" data-subname="Home Science">
+          <select class="grade-select" aria-labelledby="comm-home-label" aria-label="Home Science Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Home Science Marks">
+        </div>
+        <label id="comm-geo-label" class="cond-subject" data-subname="Business Geography">Business Geography</label>
+        <div class="subject-row" data-subject="Business Geography" class="cond-subject" data-subname="Business Geography">
+          <select class="grade-select" aria-labelledby="comm-geo-label" aria-label="Business Geography Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Business Geography Marks">
+        </div>
+      </div>
+
+      <!-- HUMANITIES SUBJECTS CONTAINER -->
+      <div id="panel-humanities" class="group-panel">
+        <label id="hum-bangla-label">Bangla (1st & 2nd)</label>
+        <div class="subject-row" data-subject="Bangla">
+          <select class="grade-select" aria-labelledby="hum-bangla-label" aria-label="Bangla Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Bangla Marks">
+        </div>
+        <label id="hum-english-label">English (1st & 2nd)</label>
+        <div class="subject-row" data-subject="English">
+          <select class="grade-select" aria-labelledby="hum-english-label" aria-label="English Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="English Marks">
+        </div>
+        <label id="hum-math-label">Mathematics</label>
+        <div class="subject-row" data-subject="Mathematics">
+          <select class="grade-select" aria-labelledby="hum-math-label" aria-label="Mathematics Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Mathematics Marks">
+        </div>
+        <label id="hum-religion-label">Religion & Moral Education</label>
+        <div class="subject-row" data-subject="Religion & Moral Education">
+          <select class="grade-select" aria-labelledby="hum-religion-label" aria-label="Religion Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Religion Marks">
+        </div>
+        <label id="hum-ict-label">ICT</label>
+        <div class="subject-row" data-subject="ICT">
+          <select class="grade-select" aria-labelledby="hum-ict-label" aria-label="ICT Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="ICT Marks">
+        </div>
+        <label id="hum-science-label">General Science</label>
+        <div class="subject-row" data-subject="General Science">
+          <select class="grade-select" aria-labelledby="hum-science-label" aria-label="General Science Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="General Science Marks">
+        </div>
+        <label id="hum-geo-label">Geography & Environment</label>
+        <div class="subject-row" data-subject="Geography & Environment">
+          <select class="grade-select" aria-labelledby="hum-geo-label" aria-label="Geography Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Geography Marks">
+        </div>
+        <label id="hum-history-label">History of Bangladesh & World Civilization</label>
+        <div class="subject-row" data-subject="History of Bangladesh & World Civilization">
+          <select class="grade-select" aria-labelledby="hum-history-label" aria-label="History Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="History Marks">
+        </div>
+        <label id="hum-civics-label">Civics & Citizenship</label>
+        <div class="subject-row" data-subject="Civics & Citizenship">
+          <select class="grade-select" aria-labelledby="hum-civics-label" aria-label="Civics Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Civics Marks">
+        </div>
+        <label id="hum-econ-label" class="cond-subject" data-subname="Economics">Economics</label>
+        <div class="subject-row" data-subject="Economics" class="cond-subject" data-subname="Economics">
+          <select class="grade-select" aria-labelledby="hum-econ-label" aria-label="Economics Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Economics Marks">
+        </div>
+        <label id="hum-agri-label" class="cond-subject" data-subname="Agriculture Studies">Agriculture Studies</label>
+        <div class="subject-row" data-subject="Agriculture Studies" class="cond-subject" data-subname="Agriculture Studies">
+          <select class="grade-select" aria-labelledby="hum-agri-label" aria-label="Agriculture Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Agriculture Marks">
+        </div>
+        <label id="hum-home-label" class="cond-subject" data-subname="Home Science">Home Science</label>
+        <div class="subject-row" data-subject="Home Science" class="cond-subject" data-subname="Home Science">
+          <select class="grade-select" aria-labelledby="hum-home-label" aria-label="Home Science Grade"><option value="">Select Grade</option></select>
+          <input type="number" min="0" max="100" placeholder="Marks (0-100)" class="mark-input" aria-label="Home Science Marks">
+        </div>
+      </div>
+
+    </form>
+
+    <button type="button" id="calculateBtn">💥 Compute Score</button>
+
+    <div id="resultContainer">
+      <div id="result"></div>
+      <div id="totalMarks"></div>
+    </div>
+
+    <button type="button" id="saveImageBtn" style="display: none;">📸 Share Result</button>
+</main>
+
+  <section class="seo-content">
+    <h2>How to Calculate SSC GPA with 4th Subject Rule</h2>
+    <p>The Secondary School Certificate (SSC) grading system in Bangladesh evaluates student performances on a Grade Point Average (GPA) system scaled up to 5.00 (colloquially called GPA 5). Understanding how your marks correspond to points is crucial for estimating final tracking positions across Science, Commerce, or Humanities groups.</p>
+    
+    <h3>Official Grading Scale Matrix</h3>
+    <ul>
+      <li><strong>80% or higher:</strong> A+ | Grade Point: 5.00</li>
+      <li><strong>70% to 79%:</strong> A | Grade Point: 4.00</li>
+      <li><strong>60% to 69%:</strong> A- | Grade Point: 3.50</li>
+      <li><strong>50% to 59%:</strong> B | Grade Point: 3.00</li>
+      <li><strong>40% to 49%:</strong> C | Grade Point: 2.00</li>
+      <li><strong>33% to 39%:</strong> D | Grade Point: 1.00</li>
+      <li><strong>Below 33%:</strong> F | Grade Point: 0.00 (Failing Grade)</li>
+    </ul>
+
+    <h3>The 4th (Optional) Subject Rule Explained</h3>
+    <p>Your optional subject serves as a booster mechanism to protect your final average grade. Under official Secondary Education Board protocols, <strong>2 Grade Points are subtracted</strong> from your optional subject score. The remaining point value is directly added to your core collective pool.</p>
+    <p>For example, if you achieve an A+ (5.00) in Higher Mathematics or Agriculture Studies as your 4th subject, 2 points are dropped, and 3 bonus points are contributed directly into your general tracking sum. If your optional grade point score is less than or equal to 2 (a C or D grade), it contributes 0 bonus points but does not penalize your core average scores.</p>
+
+    <h3>Critical Failure Conditions</h3>
+    <p>While the optional 4th subject rule adds safety benefits, it cannot save a student who fails a core subject. If you receive an <strong>F grade (under 33 marks)</strong> in any mandatory academic course—such as Bangla, English, or General Mathematics—your total final grade score automatically calculates to <strong>0.00 (Failed)</strong>, irrespective of your alternative subject configurations.</p>
+
+    <!-- FAQ Accordion Layout Section to Boost SEO Performance -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      
+      <div class="faq-item">
+        <details class="faq-details">
+          <summary>What is the minimum mark to pass a subject in the SSC Exam?</summary>
+          <div class="faq-answer">
+            <p>The minimum passing mark for any separate theoretical, practical, or MCQ part is 33%. If you get below 33 overall or fail to pass separate sub-parts as specified by the board rules, you receive an F grade.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="faq-item">
+        <details class="faq-details">
+          <summary>How does the 4th subject change my total GPA calculation?</summary>
+          <div class="faq-answer">
+            <p>Any points above 2.00 earned in your optional (4th) subject are directly added to your total grade points before dividing by the number of mandatory subjects. This bonus cannot cause your overall score to exceed a maximum ceiling of GPA 5.00.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="faq-item">
+        <details class="faq-details">
+          <summary>Can a high score in my optional subject prevent me from failing overall?</summary>
+          <div class="faq-answer">
+            <p>No. If you receive an F grade (below 33 marks) in any mandatory core subject like Bangla, Mathematics, or English, your total final outcome will immediately be marked as 0.00 (Failed).</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="faq-item">
+        <details class="faq-details">
+          <summary>Is this calculator configured for the Science, Commerce, and Arts groups?</summary>
+          <div class="faq-answer">
+            <p>Yes. This online tool dynamically maps custom requirements across the modern track frameworks for Science, Business Studies (Commerce), and Humanities (Arts) layouts under Bangladesh education boards.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const groups = {
+      science: {
+        optionalOptions: ["Higher Mathematics", "Biology", "Agriculture Studies", "Home Science"]
+      },
+      commerce: {
+        optionalOptions: ["Agriculture Studies", "Home Science", "Business Geography"]
+      },
+      humanities: {
+        optionalOptions: ["Economics", "Agriculture Studies", "Home Science"]
+      }
+    };
+
+    const grades = [
+      { label: "A+ (5.00)", value: 5 },
+      { label: "A (4.00)", value: 4 },
+      { label: "A- (3.50)", value: 3.5 },
+      { label: "B (3.00)", value: 3 },
+      { label: "C (2.00)", value: 2 },
+      { label: "D (1.00)", value: 1 },
+      { label: "F (0.00)", value: 0 }
+    ];
+
+    const groupSelect = document.getElementById("groupSelect");
+    const optionalSelect = document.getElementById("optional_subject");
+    const resultBox = document.getElementById("result");
+    const totalMarksBox = document.getElementById("totalMarks");
+    const calculateBtn = document.getElementById("calculateBtn");
+    const saveImageBtn = document.getElementById("saveImageBtn");
+    const resultContainer = document.getElementById("resultContainer");
+
+    function marksToGPA(mark) {
+      if (mark >= 80) return 5;
+      if (mark >= 70) return 4;
+      if (mark >= 60) return 3.5;
+      if (mark >= 50) return 3;
+      if (mark >= 40) return 2;
+      if (mark >= 33) return 1;
+      return 0;
+    }
+
+    function gpaToEstimatedMarks(gpa) {
+      if (gpa === 5) return 85;
+      if (gpa === 4) return 75;
+      if (gpa === 3.5) return 65;
+      if (gpa === 3) return 55;
+      if (gpa === 2) return 45;
+      if (gpa === 1) return 35;
+      return 20;
+    }
+
+    // Populate drop-down select options across all active blocks
+    function setupGradeSelects() {
+      document.querySelectorAll(".grade-select").forEach(select => {
+        // Clear except first option
+        select.innerHTML = '<option value="">Select Grade</option>';
+        grades.forEach(g => {
+          const opt = document.createElement("option");
+          opt.value = g.value;
+          opt.textContent = g.label;
+          select.appendChild(opt);
+        });
+        
+        // Synch logic between input boxes and dropdowns
+        const row = select.closest(".subject-row");
+        const markInput = row.querySelector(".mark-input");
+        
+        markInput.addEventListener("input", () => {
+          let mark = parseFloat(markInput.value);
+          if (!isNaN(mark)) select.value = marksToGPA(mark);
+          else select.value = "";
+        });
+
+        select.addEventListener("change", () => {
+          if (select.value !== "") markInput.value = "";
+        });
+      });
+    }
+
+    function syncUIActiveGroup() {
+      const selectedGroup = groupSelect.value;
+      
+      // Update Active Visibility Framework Panels
+      document.querySelectorAll(".group-panel").forEach(panel => {
+        panel.classList.remove("active");
+      });
+      const activePanel = document.getElementById(`panel-${selectedGroup}`);
+      activePanel.classList.add("active");
+
+      // Re-populate optional options
+      optionalSelect.innerHTML = '<option value="">-- Choose 4th Subject --</option>';
+      groups[selectedGroup].optionalOptions.forEach(sub => {
+        const opt = document.createElement("option");
+        opt.value = sub;
+        opt.textContent = sub;
+        optionalSelect.appendChild(opt);
+      });
+
+      // Clear layout rules for fields until 4th subject is isolated explicitly
+      adjustConditionalSubjectVisibility(activePanel, "");
+      resultContainer.style.display = "none";
+      saveImageBtn.style.display = "none";
+    }
+
+    function adjustConditionalSubjectVisibility(activePanel, optionalName) {
+      activePanel.querySelectorAll(".cond-subject").forEach(elem => {
+        const subName = elem.getAttribute("data-subname");
+        // Only show if the item matches current chosen 4th layout profile element
+        if (optionalName !== "" && subName === optionalName) {
+          elem.style.display = elem.tagName === "DIV" ? "grid" : "block";
+        } else {
+          elem.style.display = "none";
+        }
+      });
+    }
+
+    optionalSelect.addEventListener("change", () => {
+      const activePanel = document.getElementById(`panel-${groupSelect.value}`);
+      adjustConditionalSubjectVisibility(activePanel, optionalSelect.value);
+    });
+
+    function calculateGPA() {
+      const currentGroup = groupSelect.value;
+      const chosenOptional = optionalSelect.value;
+
+      if (chosenOptional === "") {
+        alert("Please choose your Optional (4th) Subject before running computation steps.");
+        return;
+      }
+
+      const activePanel = document.getElementById(`panel-${currentGroup}`);
+      const rows = activePanel.querySelectorAll(".subject-row");
+
+      let totalPoints = 0;
+      let coreCount = 0;
+      let totalMarks = 0;
+      let studentFailed = false;
+      let processingValidationSuccess = true;
+      let optionalPointBonus = 0;
+      let optionalFound = false;
+
+      rows.forEach(row => {
+        const isConditional = row.classList.contains("cond-subject");
+        const subName = row.getAttribute("data-subject");
+
+        // Skip non-active optional items
+        if (isConditional && subName !== chosenOptional) return;
+
+        let gradeSelect = row.querySelector(".grade-select");
+        let markInput = row.querySelector(".mark-input");
+
+        let gradeVal = gradeSelect.value;
+        let markVal = parseFloat(markInput.value);
+
+        if (gradeVal === "" && isNaN(markVal)) {
+          alert(`Please complete processing inputs for subject row: ${subName}`);
+          processingValidationSuccess = false;
+          return;
+        }
+
+        if (gradeVal === "") gradeVal = marksToGPA(markVal);
+        else gradeVal = parseFloat(gradeVal);
+
+        if (!isNaN(markVal)) totalMarks += markVal;
+        else totalMarks += gpaToEstimatedMarks(gradeVal);
+
+        if (isConditional && subName === chosenOptional) {
+          // Process unique deduction logic rule for 4th metrics
+          optionalPointBonus = gradeVal > 2 ? (gradeVal - 2) : 0;
+          optionalFound = true;
+        } else {
+          // Standard Required Track Items handling
+          if (gradeVal === 0) studentFailed = true;
+          totalPoints += gradeVal;
+          coreCount++;
+        }
+      });
+
+      if (!processingValidationSuccess) return;
+
+      let finalGPA = 0;
+      if (studentFailed) {
+        resultBox.textContent = `GPA Score: 0.00 (Failed)`;
+        resultContainer.className = "status-fail";
+      } else {
+        finalGPA = (totalPoints + optionalPointBonus) / coreCount;
+        if (finalGPA > 5) finalGPA = 5.00;
+        resultBox.textContent = `GPA Score: ${finalGPA.toFixed(2)}`;
+        resultContainer.className = "status-pass";
+      }
+
+      totalMarksBox.textContent = `Total Marks Registered: ~${Math.round(totalMarks)}`;
+      resultContainer.style.display = "block";
+      saveImageBtn.style.display = "block";
+    }
+
+    groupSelect.addEventListener("change", syncUIActiveGroup);
+    calculateBtn.addEventListener("click", calculateGPA);
+
+    // Light-Dark Mode UI System Handlers
+    const toggleDarkMode = document.getElementById("toggle-dark-mode");
+    function applyDarkMode(state) {
+      if (state) {
+        document.body.classList.add("dark-mode");
+        toggleDarkMode.checked = true;
+      } else {
+        document.body.classList.remove("dark-mode");
+        toggleDarkMode.checked = false;
+      }
+      localStorage.setItem("darkMode", state ? "enabled" : "disabled");
+    }
+
+    toggleDarkMode.addEventListener("change", () => applyDarkMode(toggleDarkMode.checked));
+
+    window.addEventListener("load", () => {
+      const saved = localStorage.getItem("darkMode");
+      applyDarkMode(saved === "enabled");
+      setupGradeSelects();
+      syncUIActiveGroup();
+    });
+
+    // Canvas Image Sharing Generation Engine Module
+    async function saveAsPicture() {
+      if (!window.html2canvas) {
+        await new Promise(resolve => {
+          const script = document.createElement("script");
+          script.src = "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
+          script.onload = resolve;
+          document.body.appendChild(script);
+        });
+      }
+      calculateBtn.style.visibility = "hidden";
+      saveImageBtn.style.visibility = "hidden";
+      await new Promise(r => setTimeout(r, 200));
+
+      const container = document.querySelector(".container");
+      const canvas = await html2canvas(container, { 
+        backgroundColor: document.body.classList.contains("dark-mode") ? "#1E1E24" : "#FFFFFF", 
+        scale: 2 
+      });
+
+      calculateBtn.style.visibility = "visible";
+      saveImageBtn.style.visibility = "visible";
+
+      const link = document.createElement("a");
+      link.download = "ssc_2026_gpa_result.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    }
+    saveImageBtn.addEventListener("click", saveAsPicture);
+  </script>
+</body>
+</html>
